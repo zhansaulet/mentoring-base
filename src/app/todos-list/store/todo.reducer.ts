@@ -16,11 +16,7 @@ export const todoReducer = createReducer(
   on(TodoActions.edit, (state, payload) => ({
     ...state,
     todos: state.todos.map((todo) => {
-      if (todo.id === payload.todo.id) {
-        return payload.todo;
-      } else {
-        return todo;
-      }
+      return todo.id === payload.todo.id ? payload.todo : todo;
     }),
   })),
   on(TodoActions.delete, (state, payload) => ({
