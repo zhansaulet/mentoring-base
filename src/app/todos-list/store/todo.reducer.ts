@@ -8,6 +8,10 @@ const initialState: { todos: ITodo[] } = {
 
 export const todoReducer = createReducer(
   initialState,
+  on(TodoActions.load, (state, payload) => ({
+    ...state,
+    todos: payload.todos,
+  })),
   on(TodoActions.set, (state, payload) => ({ ...state, todos: payload.todos })),
   on(TodoActions.create, (state, payload) => ({
     ...state,

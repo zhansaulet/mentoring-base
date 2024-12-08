@@ -30,10 +30,8 @@ export class TodosListComponent {
   private readonly store = inject(Store);
   public readonly todos$ = this.store.select(selectTodos);
 
-  constructor() {
-    this.todosApiService.getTodosList().subscribe((response) => {
-      this.store.dispatch(TodoActions.set({ todos: response }));
-    });
+  ngOnInit(): void {
+    this.store.dispatch(TodoActions.load({ todos: [] }));
   }
 
   createTodo(formData: ITodo) {

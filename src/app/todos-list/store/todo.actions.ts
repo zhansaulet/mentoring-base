@@ -8,5 +8,7 @@ export const TodoActions = createActionGroup({
     edit: props<{ todo: ITodo }>(),
     create: props<{ todo: ITodo }>(),
     delete: props<{ id: number }>(),
+    load: props<{ todos: ITodo[] }>(),
+    loadError: props<{ error: string }>(),
   },
 });

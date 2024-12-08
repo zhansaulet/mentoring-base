@@ -30,10 +30,8 @@ export class UsersListComponent {
   private readonly store = inject(Store);
   public readonly users$ = this.store.select(selectUsers);
 
-  constructor() {
-    this.usersApiService.getUsers().subscribe((response) => {
-      this.store.dispatch(UserActions.set({ users: response }));
-    });
+  ngOnInit(): void {
+    this.store.dispatch(UserActions.load({ users: [] }));
   }
 
   deleteUser(id: number) {
